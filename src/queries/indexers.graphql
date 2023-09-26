@@ -1,0 +1,8 @@
+query IndexersQuery {
+    indexers(
+       first:10
+        where: {dailyDataPoints_: {dayNumber_gt: 1000, chain_id: "arbitrum-one"}}
+    ) {
+        id
+    }
+}

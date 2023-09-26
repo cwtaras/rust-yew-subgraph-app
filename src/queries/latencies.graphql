@@ -1,0 +1,12 @@
+query LatencyQuery($indexer: String!) {
+    indexerDailyDataPoints(
+        orderBy: dayNumber
+        orderDirection: desc
+        first: 20
+        where: {indexer: $indexer, chain_id:"arbitrum-one"}
+    ) {
+        avg_indexer_blocks_behind
+        avg_indexer_latency_ms
+        dayNumber
+    }
+}
