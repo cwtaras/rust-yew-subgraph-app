@@ -1,4 +1,4 @@
-use crate::queries::queries::{indexers_query, latency_query};
+use crate::queries::queries::{indexer_latencies_query, indexers_query, latency_query};
 use yewdux::prelude::*;
 
 #[derive(Store, Eq, PartialEq, Clone, Default)]
@@ -15,4 +15,9 @@ pub struct IndexerLatency {
 #[derive(Store, Eq, PartialEq, Clone, Default)]
 pub struct LatencyStore {
     pub latencies: Vec<IndexerLatency>,
+}
+
+#[derive(Store, Eq, PartialEq, Clone, Default)]
+pub struct IndexerLatencies {
+    pub data: indexer_latencies_query::ResponseData,
 }

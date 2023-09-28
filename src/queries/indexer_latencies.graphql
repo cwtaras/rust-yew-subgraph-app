@@ -1,0 +1,21 @@
+query IndexerLatenciesQuery($latency_first: Int!)  {
+  indexers(
+    first:10
+    where: {dailyDataPoints_: {dayNumber_gt: 1000, chain_id: "arbitrum-one"}}
+  ) {
+    id
+    dailyDataPoints(
+      first: $latency_first
+      where: {chain_id: "arbitrum-one"}
+      orderBy: dayNumber
+      orderDirection: desc
+    ) {
+      dayNumber
+      chain_id
+      avg_indexer_latency_ms
+      avg_indexer_blocks_behind
+      query_count
+      total_query_fees
+    }
+  }
+}

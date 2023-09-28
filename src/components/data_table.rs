@@ -1,4 +1,7 @@
-use crate::queries::queries::{indexers_query, latency_query, IndexersQuery, LatencyQuery};
+use crate::queries::queries::{
+    indexer_latencies_query, indexers_query, latency_query, IndexerLatenciesQuery, IndexersQuery,
+    LatencyQuery,
+};
 use crate::stores::store::{IndexerLatency, IndexerStore, LatencyStore};
 use futures::select;
 use futures::{FutureExt, TryFutureExt};
@@ -140,7 +143,7 @@ pub fn data_table() -> Html {
     _log("herehere");
     html! {
         <div>
-            <ybc::Table>
+            <ybc::Table hoverable={true} fullwidth={true}>
             <thead>
                 <tr>
                     <th>{"Indexer ID"}</th>
@@ -153,6 +156,10 @@ pub fn data_table() -> Html {
             {latencies}
             </tbody>
             </ybc::Table>
+
+            <p></p>
+
+
         </div>
     }
 }
